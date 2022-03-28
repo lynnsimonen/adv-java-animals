@@ -5,42 +5,75 @@ import java.util.Scanner;
 public class NewUserAnimal {
 
     public Talkable newPet() {
-        String petName;
-        String choice;
         Scanner keyboard = new Scanner(System.in);
+        String petName="";
+        String choice="";
+        int miceKilled = 0;
+        String friendlyDog = "";
+        Boolean friendly = true;
 
         //Ask the user what type of animal they want to create
         //Use decisions and exceptions to verify that the user has entered data of the correct type.
         do {
-            System.out.println("\n\rWhich pet would you like to create? \n" +
-                    "a. cat\n" +
-                    "b. dog\n");
-            choice = keyboard.nextLine();
-            if (choice.toUpperCase().equals("A")) {
-                do {
-                    System.out.println("What would you like to name your cat?");
-                    //Accept the input(s) necessary to instantiate that type of object
-                    petName = keyboard.nextLine();
-                } while (petName.equals(""));
-                //Create an object of that type
-                return new Cat(0, petName);
+            try {
+                System.out.println("\n\rWhich pet would you like to create? \n" +
+                        "a. cat\n" +
+                        "b. dog\n");
+                choice = keyboard.nextLine().toUpperCase();
+            } catch (Exception e) {
+                System.out.println("Error: " + e);
             }
-            if (choice.toUpperCase().equals("B")) {
-                System.out.println("What would you like to name your dog?");
+            //} while (!choice.equals("A") || !choice.equals("B"));
+        } while (choice.equals(""));
+
+        //   ----------------------  CAT  --------------------------------------------
+        if (choice.equals("A")) {
+            do {
+                try {
+                System.out.println("What would you like to name your cat?");
                 //Accept the input(s) necessary to instantiate that type of object
                 petName = keyboard.nextLine();
-                if (petName != "") {
-                    //Create an object of that type
-                    return new Dog(true, petName);
+                } catch (Exception e) {
+                    System.out.println("Error: " + e);
                 }
-            }
-        } while (choice.toUpperCase() != "A" || choice.toUpperCase() != "B");
-            // do ... while leads to an error asking for a return (it doesn't seem to be able
-            // to recognize the returns in the "do... while" statement  :(
-            //return petChoice = new Cat(0, " YOU FORGOT TO GIVE ME A NAME!!!,  ");
-            //System.out.println("ERROR: String is null or wrong entry");
-            return new Cat(0, " YOU DIDN'T GIVE ME A NAME!!!");
+            } while (petName.equals(""));
+            do{
+                try {
+                    System.out.println("How many mice has " + petName + " killed?");
+                    miceKilled = Integer.parseInt(keyboard.nextLine());
+                } catch (Exception e) {
+                    System.out.println("Error: " + e);
+                }
+            } while(miceKilled < 0);
+            //Create an object of that type
+            return new Cat(miceKilled, petName);
+        }
 
+            //   ----------------------  DOG  --------------------------------------------
+        else {
+            do {
+                try {
+                    System.out.println("What would you like to name your dog?");
+                    //Accept the input(s) necessary to instantiate that type of object
+                    petName = keyboard.nextLine();
+                } catch (Exception e) {
+                    System.out.println("Error: " + e);
+                }
+            } while (petName.equals(""));
+            do {
+                try {
+                    System.out.println("Is " + petName + " friendly? \r\nyes (Y)\r\nno (N)");
+                    friendlyDog = keyboard.nextLine().toUpperCase();
+                } catch (Exception e) {
+                    System.out.println("Error: " + e);
+                }
+                // Why is there no error statement for "2"?
+                //} while (!friendlyDog.equals("Y") || !friendlyDog.equals("N"));
+            } while (friendlyDog.equals(""));
+            if (friendlyDog.equals("N"))
+                friendly = false;
+            //Create an object of that type
+            return new Dog(friendly, petName);
+        }
     }
 }
-
