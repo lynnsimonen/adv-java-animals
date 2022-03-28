@@ -1,23 +1,7 @@
 package us.mattgreen;
-
 import java.util.ArrayList;
 
-        //In your project, create a class that does the following:
-        //
-        //Ask the user what type of animal they want to create
-        //Accept the input(s) necessary to instantiate that type of object
-        //Create an object of that type
-        //Add the object to the ArrayList
-        //Hint: Pass the list to the user input-gathering object.
-        //
-        //This class should use decisions and exceptions to verify that the user has entered data of the correct type.
-        //
-        //In Main.java, find the three lines surround by comments.
-        //
-        //Replace these three lines with code that does the following:
-        //
-        //Instantiate an object of your user input-gathering class
-        //Use that object to add an object to the list
+
 
 public class Main {
 
@@ -27,16 +11,15 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Talkable> zoo = new ArrayList<>();
 
-        // Lines to Replace Begin Here
-            //        zoo.add(new Dog(true, "Bean"));
-            //        zoo.add(new Cat(9, "Charlie"));
-            //        zoo.add(new Teacher(44, "Stacy Read"));
 
+        //Instantiate an object of your user input-gathering class
         NewUserAnimal animal = new NewUserAnimal();
 
-        zoo.add((Talkable) animal);
+        System.out.println(animal.newPet("birdie"));
 
-        // End Lines to Replace
+        //Add the object to the ArrayList
+        //zoo.add((Talkable) animal);
+
 
         for (Talkable thing : zoo) {
             printOut(thing);
