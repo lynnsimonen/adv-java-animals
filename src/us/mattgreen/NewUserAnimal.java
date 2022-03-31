@@ -23,8 +23,8 @@ public class NewUserAnimal {
             } catch (Exception e) {
                 System.out.println("Error: " + e);
             }
-            //} while (!choice.equals("A") || !choice.equals("B"));
-        } while (choice.equals(""));
+        } while (!choice.equals("A") && !choice.equals("B"));
+        //} while (choice.equals(""));
 
         //   ----------------------  CAT  --------------------------------------------
         if (choice.equals("A")) {
@@ -68,8 +68,8 @@ public class NewUserAnimal {
                     System.out.println("Error: " + e);
                 }
                 // Why is there no error statement for "2"?
-                //} while (!friendlyDog.equals("Y") || !friendlyDog.equals("N"));
-            } while (friendlyDog.equals(""));
+            } while (!friendlyDog.equals("Y") && !friendlyDog.equals("N"));
+            //} while (friendlyDog.equals(""));
             if (friendlyDog.equals("N"))
                 friendly = false;
             //Create an object of that type
